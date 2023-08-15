@@ -1,0 +1,36 @@
+#Install the packages
+!pip install librosa
+!pip install SpeechRecognition
+!pip install googletrans
+!pip install gTTs
+!pip install PyAudio
+!pip install googletrans==3.1.0a0
+!pip install googletrans==4.0.0-rc1
+
+
+import numpy as np	# linear algebra
+import pandas as pd	# data processing, CSV file I/O (e.g. pd.read_csv)
+from tqdm import tqdm 
+pd.options.display.max_colwidth = 200
+import warnings
+warnings.filterwarnings('ignore')
+import os
+for dirname, _, filenames in os.walk('/kaggle/input'):
+    for filename in filenames[:2]:
+      print(os.path.join(dirname, filename))
+ 
+import librosa
+import IPython.display as ipd
+import speech_recognition as sr
+from googletrans import Translator from gtts import gTTS
+ipd.Audio('/kaggle/input/nlp-specialization-data/harvard.wav')
+ipd.Audio('/kaggle/input/nlp-specialization-data/testSpeech.wav')
+ipd.Audio('/kaggle/input/nlp-specialization-data/singleEnglishWord.wav')
+r = sr.Recognizer()
+harvard = sr.AudioFile('/kaggle/input/nlp-specialization-data/testSpeech.wav') 
+with harvard as source:
+  audio = r.record(source)
+type(audio)
+speech_recognition.AudioData 
+text=r.recognize_google(audio)
+text
